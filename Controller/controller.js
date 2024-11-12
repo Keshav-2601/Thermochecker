@@ -34,16 +34,24 @@ dotenv.config();
             const Logininfo=await UserRepository.logindata(data)
             if(Logininfo){
                 const jwtkey=process.env.JWT_KEY;
-                const token=jwt.sign({
-                    userID:Logininfo._id,email:data.email
-                },jwtkey,{expiresIn:'7d'})
-                return res.status(200).send('login successfully',token);
+                const token=jwt.sign(
+                    {
+                        userID: Logininfo._id,
+                        email: data.email,
+                        password: data.password,
+                    },
+                    jwtkey,
+                    { expiresIn: '7d' }
+                );
+                return res.status(200).json({ message: 'Login successful', token });
             }
             else{
                 return res.status(404).send('not an authentic user');
             }
         } catch (error) {
-            
+            console.error("Error in login:", error);
+            return res.status(500).send('Internal server error');
         }
     }
+   
 }

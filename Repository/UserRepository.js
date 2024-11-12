@@ -14,7 +14,6 @@ export default class UserRepository{
         } catch (error) {
             console.log("some db error happened",error);
         }
-       
     }
     static async logindata(data){
         try {

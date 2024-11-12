@@ -15,10 +15,11 @@ UserRouter.post('/create',checkemail,hashPassword,(req,res)=>{
 UserRouter.post('/login',(req,res)=>{
     Usercontrol.login(req,res);
 })
-UserRouter.get('/test', (req, res) => {
-    console.log("GET request received at /user/test");
-    return res.send("Test route is working");
-});
+UserRouter.post('/admin',jsonAuthentication_Authorization)
+// UserRouter.get('/test', (req, res) => {
+//     console.log("GET request received at /user/test");
+//     return res.send("Test route is working");
+// });
 
 
 export default UserRouter

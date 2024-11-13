@@ -15,7 +15,7 @@ UserRouter.post('/create',checkemail,hashPassword,(req,res)=>{
 UserRouter.post('/login',(req,res)=>{
     Usercontrol.login(req,res);
 })
-UserRouter.post('/admin',jsonAuthentication_Authorization)
+UserRouter.post('/admin', jsonAuthentication_Authorization);
 // UserRouter.get('/test', (req, res) => {
 //     console.log("GET request received at /user/test");
 //     return res.send("Test route is working");

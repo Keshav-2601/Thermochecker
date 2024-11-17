@@ -10,7 +10,7 @@ const server=express();
 server.use(cors());
 server.use(express.json());  
 server.use('/user',UserRouter);
-server.use('/patient',Adminrouter);
+server.use('/admin',Adminrouter);
 server.use('/Homepage',Homepagerouter);
 server.listen(3000,()=>{
     console.log("server is running at 3000");

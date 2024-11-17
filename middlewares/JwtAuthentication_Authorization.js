@@ -11,8 +11,8 @@ export async function jsonAuthentication_Authorization(req, res) {
         const decoded = jwt.verify(token, process.env.JWT_KEY);
         req.user = decoded;
 
-        if (req.user.email === "Keshavv857@gmail.com") {
-            const isAdmin = await bcrypt.compare("KeshavVerma@26", req.user.password);
+        if (req.user.email === process.env.ADMIN_EMAIL) {
+            const isAdmin = await bcrypt.compare(process.env.ADMIN_PASSWORD, req.user.password);
             if (isAdmin) {
                 return res.status(200).send("Admin is logged in!");
             } else {

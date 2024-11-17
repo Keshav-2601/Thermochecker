@@ -1,13 +1,14 @@
 import React from "react";
-import AdminRepository from "../Repository/AdminRepository";
+import AdminRepository from "../Repository/AdminRepository.js";
 export default class AdminController{
     async adddata(req,res){
+        console.log("firstname is: ",req.body.firstname);
         try {
             const body={
-                firstname:req.body.name,
+                firstname:req.body.firstname,
                 age:req.body.age,
-                email:req.body.email,
-                temperature:req.body.temperature
+                temperature:req.body.temperature,
+                priority:req.body.priority
             }
             const result= await AdminRepository.collectdata_in_db(body)
             if(result){
@@ -18,6 +19,5 @@ export default class AdminController{
             console.log("No data found",error);
             return res.status(404).send("data not recieved");
         }
-        
     }
 }

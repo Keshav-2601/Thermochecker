@@ -1,5 +1,5 @@
 import React from "react";
-import { getdb } from "../config/mongodb";
+import { getdb } from "../config/mongodb.js";
 
 export default class AdminRepository{
     static async collectdata_in_db(body){

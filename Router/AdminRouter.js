@@ -4,7 +4,7 @@ import AdminController from "../Controller/Admincontroller.js";
 import { jsonAuthentication_Authorization } from '../middlewares/JwtAuthentication_Authorization.js';
 const  Adminrouter=express.Router();
 const AdminContorl=new AdminController();
-Adminrouter.post('/patient',jsonAuthentication_Authorization,(req,res)=>{
+Adminrouter.post('/patient',(req,res)=>{
     AdminContorl.adddata(req,res);
 })
 export{Adminrouter}

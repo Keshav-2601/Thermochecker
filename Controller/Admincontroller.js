@@ -47,4 +47,24 @@ export default class AdminController{
             return res.status(500).json({ message: "Internal server error" });
         }
     }
+    async update(req,res){
+        try {
+            const body={
+                ID:req.body._id,
+                firstname:req.body.firstname,
+                age:req.body.age,
+                preferedHumidity:req.body.preferedHumidity,
+                preferedTemperature:req.body.preferedTemperature,
+            }
+            const result=await AdminRepository.updatedata(body);
+            if(result){
+                return res.status(200).send("Succefully Updated !!");
+            }
+            else{
+                return res.status(400).send("Not succefullly updated");
+            }
+        } catch (error) {
+            console.log("Error ,request can't be reached ",error);
+        }
+    }
 }

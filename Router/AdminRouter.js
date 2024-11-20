@@ -12,3 +12,6 @@ export{Adminrouter}
 Adminrouter.post('/adminlogin',(req,res)=>{
     AdminContorl.login(req,res);
 });
+Adminrouter.put('/update',(req,res)=>{
+    AdminContorl.update(req,res);
+})

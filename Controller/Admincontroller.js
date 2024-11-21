@@ -67,4 +67,18 @@ export default class AdminController{
             console.log("Error ,request can't be reached ",error);
         }
     }
+    async delete(req,res){
+        try {
+            const Id=req.body.Id;
+            const Result=await AdminRepository.Deletedata(Id);
+            if(Result){
+                return res.status(200).send(Result);
+            }
+            else{
+                return res.status(200).send("Unsuccessfull in deleting item");
+            }
+        } catch (error) {
+            console.log("Check ur request some error occur",error);
+        }
+    }
 }

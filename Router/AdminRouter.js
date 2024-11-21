@@ -15,3 +15,6 @@ Adminrouter.post('/adminlogin',(req,res)=>{
 Adminrouter.put('/update',(req,res)=>{
     AdminContorl.update(req,res);
 })
+Adminrouter.delete('/delete',(req,res)=>{
+    AdminContorl.delete(req,res);
+})

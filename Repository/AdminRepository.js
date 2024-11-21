@@ -1,6 +1,6 @@
 import React from "react";
 import { getdb } from "../config/mongodb.js";
-
+import { ObjectId } from "mongodb";
 export default class AdminRepository {
     static async collectdata_in_db(body) {
         try {
@@ -14,6 +14,8 @@ export default class AdminRepository {
     }
     static async updatedata(body) {
         try {
+            const db=getdb();
+            const collection = db.collection("Patients_Table");
             const filter = { _id: new ObjectId(body.ID) }; 
 
 
@@ -39,6 +41,21 @@ export default class AdminRepository {
         } catch (error) {
             console.error("Error while updating the document:", error);
             throw new Error("Unable to update the document.");
+        }
+    }
+    static async Deletedata(id){
+        try {
+            const db=getdb();
+            const collection=db.collection("Patients_Table");
+            const filterdata= {_id:new ObjectId(id)};
+            const deletedata=await collection.deleteOne(filterdata);
+            if (result.deletedCount > 0) {
+                return "Successfully Deleted";
+            } else {
+                return "No matching document found to delete";
+            }
+        } catch (error) {
+            console.log("Data not getting passed some error coems ",error);
         }
     }
 }

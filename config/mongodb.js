@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
-
-const url="mongodb://localhost:27017/IOT";
+import dotenv from 'dotenv';
+const url=process.env.MONGO_DB;
 
 let client;
 const mongodbconnection=async()=>{

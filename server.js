@@ -8,6 +8,11 @@ import cors from 'cors';
 dotenv.config();
 const server=express();
 server.use(cors());
+// server.use(cors({
+//     origin: '*', 
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     credentials: true, 
+// }));
 server.use(express.json());  
 server.use('/user',UserRouter);
 server.use('/admin',Adminrouter);

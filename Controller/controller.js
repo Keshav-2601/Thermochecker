@@ -38,6 +38,7 @@ dotenv.config();
                     {
                         userID: Logininfo._id,
                         email: data.email,
+                        role:"User",
                         password: data.password,
                     },
                     jwtkey,

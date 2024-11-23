@@ -15,8 +15,7 @@ export default class AdminController{
                 priority:req.body.priority,
                 preferedHumidity:req.body.preferedHumidity,
                 preferedTemperature:req.body.preferedTemperature,
-                mintemp:req.body.mintemp,
-                maxtemp:req.body.maxtemp
+               
             }
             const result= await AdminRepository.collectdata_in_db(body)
             if(result){

@@ -8,16 +8,12 @@ import cors from 'cors';
 dotenv.config();
 const server=express();
 server.use(cors());
-// server.use(cors({
-//     origin: '*', 
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//     credentials: true, 
-// }));
+
 server.use(express.json());  
 server.use('/user',UserRouter);
 server.use('/admin',Adminrouter);
 server.use('/Homepage',Homepagerouter);
-server.listen(3000,()=>{
-    console.log("server is running at 3000");
+server.listen(3200,()=>{
+    console.log("server is running at 3200");
     mongodbconnection();
 });

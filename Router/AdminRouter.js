@@ -12,9 +12,9 @@ export{Adminrouter}
 Adminrouter.post('/adminlogin',(req,res)=>{
     AdminContorl.login(req,res);
 });
-Adminrouter.put('/update',jsonAuthentication_Authorization,(req,res)=>{
+Adminrouter.put('/update',(req,res)=>{
     AdminContorl.update(req,res);
 })
-Adminrouter.delete('/delete',jsonAuthentication_Authorization,(req,res)=>{
+Adminrouter.delete('/delete',(req,res)=>{
     AdminContorl.delete(req,res);
 })

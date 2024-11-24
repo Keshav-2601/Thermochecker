@@ -33,7 +33,7 @@ export default class AdminController{
                 const isPasswordValid = await bcrypt.compare(req.body.password, process.env.ADMIN_PASSWORD);
     
                 if (isPasswordValid) {
-                    const jwtadmintoken = jwt.sign({ email: process.env.ADMIN_EMAIL,role:"Admin" }, process.env.JWT_KEY, { expiresIn: '7d' });
+                    const jwtadmintoken = jwt.sign({ email: process.env.ADMIN_EMAIL,role:"Admin",password:process.env.ADMIN_PASSWORD }, process.env.JWT_KEY, { expiresIn: '7d' });
                     return res.status(200).json({ message: "Admin login successful", token: jwtadmintoken });
                 } else {
                     return res.status(403).json({ message: "Incorrect password" });

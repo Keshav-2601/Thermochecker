@@ -8,7 +8,7 @@ import cors from 'cors';
 dotenv.config();
 const server=express();
 server.use(cors());
-server.use(cors({ origin: 'https://your-frontend-domain.vercel.app' }));
+server.use(cors({ origin: 'https://thermochecker-frontend.vercel.app' }));
 server.use(express.json());  
 server.use('/user',UserRouter);
 server.use('/admin',Adminrouter);

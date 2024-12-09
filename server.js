@@ -13,6 +13,9 @@ server.use(express.json());
 server.use('/user',UserRouter);
 server.use('/admin',Adminrouter);
 server.use('/Homepage',Homepagerouter);
+server.get('/', (req, res) => {
+    res.send('Backend is working!');
+});
 server.listen(3200,()=>{
     console.log("server is running at 3200");
     mongodbconnection();

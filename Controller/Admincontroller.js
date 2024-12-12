@@ -90,7 +90,7 @@ export default class AdminController {
                 publishKey: process.env.PUBNUB_PUBLISH_KEY,
                 userId:process.env.PUBNUB_USER_ID ,
                 ssl:process.env.PUBNUB_SSL==='true',
-                cryptoModule: PubNub.CryptoModule.aesCbcCryptoModule({ cipherKey: 'pubnubenigma' })
+                //cryptoModule: PubNub.CryptoModule.aesCbcCryptoModule({ cipherKey: 'pubnubenigma' })
             })
             const token=await pubnub.grantToken({
                 ttl: 60,

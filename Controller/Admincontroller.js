@@ -95,6 +95,7 @@ export default class AdminController {
             const pubnub = new PubNub({
                 subscribeKey: process.env.PUBNUB_SUBSCRIBE_KEY,
                 publishKey: process.env.PUBNUB_PUBLISH_KEY,
+                secretKey:process.env.PUBNUB_SECRET_KEY,
                 userId: process.env.PUBNUB_USER_ID,
                 ssl: process.env.PUBNUB_SSL === 'true',
                 cryptoModule: PubNub.CryptoModule.aesCbcCryptoModule({ cipherKey: 'pubnubenigma' })

@@ -3,11 +3,18 @@ import AdminRepository from "../Repository/AdminRepository.js";
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import PubNub from "pubnub";
-import dotenv from'dotenv';
+import dotenv from 'dotenv';
 
 dotenv.config();
+
 export default class AdminController {
+
     async adddata(req, res) {
+        console.log("Initializing PubNub with:");
+        console.log("Subscribe Key:", process.env.PUBNUB_SUBSCRIBE_KEY);
+        console.log("Publish Key:", process.env.PUBNUB_PUBLISH_KEY);
+        console.log("User ID:", process.env.PUBNUB_USER_ID);
+        console.log("SSL:", process.env.PUBNUB_SSL);
         console.log("firstname is: ", req.body.firstname);
         try {
             const body = {
@@ -86,32 +93,34 @@ export default class AdminController {
     async grandtoken(req, res) {
         try {
             const pubnub = new PubNub({
-                subscribeKey:process.env.PUBNUB_SUBSCRIBE_KEY,
+                subscribeKey: process.env.PUBNUB_SUBSCRIBE_KEY,
                 publishKey: process.env.PUBNUB_PUBLISH_KEY,
-                userId:process.env.PUBNUB_USER_ID ,
-                ssl:process.env.PUBNUB_SSL==='true',
-                //cryptoModule: PubNub.CryptoModule.aesCbcCryptoModule({ cipherKey: 'pubnubenigma' })
+                userId: process.env.PUBNUB_USER_ID,
+                ssl: process.env.PUBNUB_SSL === 'true',
+                cryptoModule: PubNub.CryptoModule.aesCbcCryptoModule({ cipherKey: 'pubnubenigma' })
             })
-            const token=await pubnub.grantToken({
+            const token = await pubnub.grantToken({
                 ttl: 60,
                 authorized_uuid: process.env.PUBNUB_USER_ID,
                 resources: {
-                  channels: {
-                    "pi_channel": {
-                      read: true,
-                      write: true,
-                      manage: true
+                    channels: {
+                        "pi_channel": {
+                            read: true,
+                            write: true,
+                            manage: true
+                        }
                     }
-                  }
                 }
-              })    
-            if(token){
-                return res.status(200).json({"Pubnub_Token":token});
-            }       
-            return res.status(403).send("No token created some error occured");   
-            
+            })
+            console.log('Generated Token:', token);
+            if (token) {
+                return res.status(200).json({ "Pubnub_Token": token });
+            }
+
+            return res.status(403).send("No token created some error occured");
+
         } catch (error) {
-            console.log("some error in creating token",error);
+            console.log("some error in creating token", error);
             res.status(500).send("server error pls check");
         }
     }

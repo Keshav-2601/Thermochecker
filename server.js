@@ -10,9 +10,7 @@ const server=express();
 server.use(cors());
 server.use(cors({
     origin: 'https://thermochecker-frontend.vercel.app', 
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],           
-    allowedHeaders: ['Content-Type', 'Authorization'],    
-    credentials: true                                      
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],                                               
 }));
 server.use(express.json());  
 server.use('/user',UserRouter);

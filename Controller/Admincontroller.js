@@ -10,12 +10,6 @@ dotenv.config();
 export default class AdminController {
 
     async adddata(req, res) {
-        console.log("Initializing PubNub with:");
-        console.log("Subscribe Key:", process.env.PUBNUB_SUBSCRIBE_KEY);
-        console.log("Publish Key:", process.env.PUBNUB_PUBLISH_KEY);
-        console.log("User ID:", process.env.PUBNUB_USER_ID);
-        console.log("SSL:", process.env.PUBNUB_SSL);
-        console.log("firstname is: ", req.body.firstname);
         try {
             const body = {
                 firstname: req.body.firstname,

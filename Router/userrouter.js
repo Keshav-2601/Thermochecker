@@ -15,6 +15,9 @@ UserRouter.post('/create',checkemail,hashPassword,(req,res)=>{
 UserRouter.post('/login',(req,res)=>{
     Usercontrol.login(req,res);
 })
+UserRouter.get('/pubnub',(req,res)=>{
+    Usercontrol.grandusertoken(req,res);
+})
 
 // UserRouter.get('/test', (req, res) => {
 //     console.log("GET request received at /user/test");
